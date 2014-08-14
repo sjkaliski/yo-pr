@@ -41,7 +41,7 @@ func prHandler(rw http.ResponseWriter, req *http.Request) {
 
 	// If the type of PR action is "open", send a Yo to
 	// all subscribers.
-	if data.PullRequest.Action == "open" {
+	if data.Action == "open" {
 		log.Println(fmt.Sprintf("new pr opened: %s", data.PullRequest.Url))
 
 		if err := yoClient.YoAll(); err != nil {
