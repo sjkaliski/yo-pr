@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/sjkaliski/go-yo"
 )
@@ -63,5 +64,5 @@ func main() {
 
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/pr", prHandler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), nil)
 }
