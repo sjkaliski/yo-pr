@@ -15,7 +15,7 @@ Send a Yo whenever a PR is opened.
 ```
 $ git clone https://github.com/sjkaliski/yo-pr.git
 $ go get
-$ ./yo-pr --yo_token=<INSERT_TOKEN_HERE>
+$ yo-pr --yo_token=<INSERT_TOKEN_HERE>
 ```
 
 By default, the service runs on port 8080.
