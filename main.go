@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,7 +11,6 @@ import (
 )
 
 var (
-	yoToken  = flag.String("yo_token", "", "Yo API Token.")
 	yoClient *yo.Client
 )
 
@@ -55,12 +53,12 @@ func prHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	flag.Parse()
-	if *yoToken == "" {
-		log.Fatal("yo_token required.")
+	yoToken := os.Getenv("YO_TOKEN")
+	if yoToken == "" {
+		log.Fatal("YO_TOKEN required.")
 	}
 
-	yoClient = yo.NewClient(*yoToken)
+	yoClient = yo.NewClient(yoToken)
 
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/pr", prHandler)
